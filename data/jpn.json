@@ -1,0 +1,22 @@
+{
+  "lexemes": [
+    {
+      "lemma": "ウェブサイト",
+      "categories": [
+        "NOUN"
+      ]
+    },
+    {
+      "lemma": "の",
+      "categories": [
+        "PART"
+      ]
+    },
+    {
+      "lemma": "情報",
+      "categories": [
+        "NOUN"
+      ]
+    }
+  ]
+}
