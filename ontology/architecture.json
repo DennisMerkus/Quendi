@@ -1,0 +1,23 @@
+{
+  "namespace": "Architecture",
+  "concepts": [
+    {
+      "name": "Window",
+      "is": [
+        ".Window"
+      ]
+    },
+    {
+      "name": "Gate",
+      "is": [
+        ".Window"
+      ]
+    },
+    {
+      "name": "Door",
+      "is": [
+        ".Window"
+      ]
+    }
+  ]
+}

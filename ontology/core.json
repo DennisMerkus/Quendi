@@ -1,0 +1,26 @@
+{
+  "namespace": "",
+  "concepts": [
+    {
+      "name": "Window",
+      "description": "Something that allows or blocks passage through",
+      "state": {
+        "Position": [
+          "Open",
+          "Closed"
+        ]
+      },
+      "schemas": [
+        {
+          "name": "Close",
+          "pre": {
+            "Position": "Open"
+          },
+          "post": {
+            "Position": "Closed"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "namespace": "Life",
+  "concepts": [
+    {
+      "name": "Creature",
+      "description": "An animate being",
+      "state": {},
+      "schemas": [
+        {
+          "name": "Move",
+          "in": {
+            "Location": ""
+          },
+          "out": {
+            "Location": ""
+          },
+          "pre": {
+            "At": "Location"
+          },
+          "post": {
+            "At": "Location"
+          }
+        }
+      ]
+    }
+  ]
+}

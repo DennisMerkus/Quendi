@@ -1,5 +1,7 @@
 mod lexicon;
+mod eng;
 mod jpn;
+mod uxy;
 
 #[cfg(test)]
 mod tests {

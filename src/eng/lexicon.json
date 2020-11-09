@@ -1,0 +1,34 @@
+{
+  "language": "eng",
+  "lexemes": [
+    {
+      "concept": {
+        "entity": "@Speaker"
+      },
+      "lexeme": {
+        "lemma": "I",
+        "class": "PP",
+        "Person": "1",
+        "Number": "Sing"
+      }
+    },
+    {
+      "concept": {
+        "entity": "Architecture.Window"
+      },
+      "lexeme": {
+        "lemma": "door",
+        "class": "N"
+      }
+    },
+    {
+      "concept": {
+        "action": ".Window:Close"
+      },
+      "lexeme": {
+        "lemma": "close",
+        "class": "V"
+      }
+    }
+  ]
+}

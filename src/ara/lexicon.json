@@ -1,0 +1,18 @@
+{
+  "lexemes": [
+    {
+      "concept": "Metals.Gold",
+      "lemma": "ذهبي",
+      "tashkil": "ذَهَبِيّ"
+    },
+    {
+      "concept": "Politics.Authority",
+      "lemma": "سلطة"
+    },
+    {
+      "concept": "Time.Ancient",
+      "lemma": "قديم",
+      "tashkil": "قَدِيم"
+    }
+  ]
+}
