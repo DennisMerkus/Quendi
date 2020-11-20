@@ -1,5 +1,5 @@
 [package]
-name = "Quendi"
+name = "Quenya"
 version = "0.1.0"
 authors = ["Dennis Merkus <dennis.merkus@pm.me>"]
 edition = "2018"
@@ -10,9 +10,9 @@ edition = "2018"
 serde_json = "1.0"
 
 [lib]
-name = "quendi"
+name = "quenya"
 path = "src/lib.rs"
 
 [[bin]]
-name = "quendi"
+name = "quenya"
 path = "src/bin.rs"
