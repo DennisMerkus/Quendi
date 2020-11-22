@@ -33,16 +33,16 @@ fn is_present_simple(word: &str) -> Result<&str, ()> {
     Err(())
 }
 
-fn make_present_simple(word: &str) -> &str {
-    word + 's'
+fn make_present_simple(word: &str) -> String {
+    [word, "s"].concat()
 }
 
-fn make_past_simple(word: &str) -> &str {
-    word + "ed"
+fn make_past_simple(word: &str) -> String {
+    [word, "ed"].concat()
 }
 
-fn make_present_participle(word: &str) -> &str {
-    word + "ing"
+fn make_present_participle(word: &str) -> String {
+    [word, "ing"].concat()
 }
 
 #[cfg(test)]

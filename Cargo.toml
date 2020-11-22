@@ -1,18 +1,2 @@
-[package]
-name = "Quenya"
-version = "0.1.0"
-authors = ["Dennis Merkus <dennis.merkus@pm.me>"]
-edition = "2018"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
-[dependencies]
-serde_json = "1.0"
-
-[lib]
-name = "quenya"
-path = "src/lib.rs"
-
-[[bin]]
-name = "quenya"
-path = "src/bin.rs"
+[workspace]
+members = ["core", "wasm"]
