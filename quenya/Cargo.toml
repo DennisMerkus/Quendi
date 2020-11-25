@@ -1,5 +1,5 @@
 [package]
-name = "core"
+name = "quenya"
 version = "0.1.0"
 authors = ["Dennis Merkus <dennis.merkus@pm.me>"]
 edition = "2018"

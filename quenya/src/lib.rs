@@ -1,7 +1,12 @@
 mod lexicon;
 mod eng;
 mod jpn;
-mod uxy;
+pub mod uxy;
+pub mod text;
+
+pub fn annotate(text: &str) -> &str {
+    text
+}
 
 #[cfg(test)]
 mod tests {
