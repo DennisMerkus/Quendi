@@ -4,10 +4,13 @@ version = "0.1.0"
 authors = ["Dennis Merkus <dennis.merkus@pm.me>"]
 edition = "2018"
 
+[package.metadata.wasm-pack.profile.release]
+wasm-opt = ["-Oz", "--enable-mutable-globals"]
+
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-core = { path = "../core" }
+quenya = { path = "../quenya" }
 wasm-bindgen = "0.2"
 
 
