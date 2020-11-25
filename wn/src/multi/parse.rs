@@ -1,4 +1,6 @@
 use regex::Regex;
+use std::fs::File;
+use std::io::{BufReader, BufRead};
 
 #[derive(Debug, PartialEq)]
 enum Part {
@@ -85,9 +87,22 @@ fn parse_multilingual_wordnet_line(line: &str) -> Entry {
     }
 }
 
+fn parse_multilingual_wordnet_file(file: File) -> Vec<Entry<'static>> {
+    let mut entries: Vec<Entry> = Vec::new();
+
+    for line in BufReader::new(file).lines() {
+        if let Ok(line) = line {
+            entries.push(parse_multilingual_wordnet_line(line.as_str()))
+        }
+    }
+
+    entries
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
+    use std::path::Path;
 
     #[test]
     fn it_extracts_indonesian_lemma() {
@@ -116,5 +131,12 @@ mod tests {
             pos: Part::Noun,
             offset: "00006024",
         }))
+    }
+
+    #[test]
+    fn it_reads_indonesian_wordnet_file() {
+        let path = Path::new("dict/msa/wn-data-ind.tab");
+
+        let _entries = parse_multilingual_wordnet_file(File::open(path).unwrap());
     }
 }
