@@ -22,7 +22,6 @@ fn parse_words(words_string: &str) -> Vec<WordNetIdentifier> {
     let word_regex = Regex::new(r"((?P<word>[\S]+)\s(?P<lex_id>[0-9A-Fa-f]))+").unwrap();
 
     let mut words: Vec<WordNetIdentifier> = Vec::new();
-
     
     for capture in word_regex.captures_iter(words_string) {
         words.push(WordNetIdentifier {
