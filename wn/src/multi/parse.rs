@@ -2,13 +2,7 @@ use regex::Regex;
 use std::fs::File;
 use std::io::{BufReader, BufRead};
 
-#[derive(Debug, PartialEq)]
-enum Part {
-    Adjective,
-    Adverb,
-    Noun,
-    Verb,
-}
+use crate::pos::{Part, parse_pos};
 
 #[derive(Debug, PartialEq)]
 struct Lemma<'a> {
@@ -49,13 +43,7 @@ fn parse_multilingual_wordnet_line(line: &str) -> Entry {
 
     let language = captures.name("language").unwrap().as_str();
     let offset = captures.name("offset").unwrap().as_str();
-    let pos = match &captures["pos"] {
-        "a" => Part::Adjective,
-        "n" => Part::Noun,
-        "r" => Part::Adverb,
-        "v" => Part::Verb,
-        _ => panic!()
-    };
+    let pos = parse_pos(&captures["pos"]);
     let content = captures.name("content").unwrap().as_str();
 
     let line_type = &captures["type"];
@@ -87,17 +75,17 @@ fn parse_multilingual_wordnet_line(line: &str) -> Entry {
     }
 }
 
-fn parse_multilingual_wordnet_file(file: File) -> Vec<Entry<'static>> {
-    let mut entries: Vec<Entry> = Vec::new();
-
-    for line in BufReader::new(file).lines() {
-        if let Ok(line) = line {
-            entries.push(parse_multilingual_wordnet_line(line.as_str()))
-        }
-    }
-
-    entries
-}
+// fn parse_multilingual_wordnet_file(file: File) -> Vec<Entry<'static>> {
+//     let mut entries: Vec<Entry> = Vec::new();
+// 
+//     for line in BufReader::new(file).lines() {
+//         if let Ok(line) = line {
+//             entries.push(parse_multilingual_wordnet_line(line.as_str()))
+//         }
+//     }
+// 
+//     entries
+// }
 
 #[cfg(test)]
 mod tests {
@@ -133,10 +121,10 @@ mod tests {
         }))
     }
 
-    #[test]
-    fn it_reads_indonesian_wordnet_file() {
-        let path = Path::new("dict/msa/wn-data-ind.tab");
-
-        let _entries = parse_multilingual_wordnet_file(File::open(path).unwrap());
-    }
+    // #[test]
+    // fn it_reads_indonesian_wordnet_file() {
+    //     let path = Path::new("dict/msa/wn-data-ind.tab");
+    // 
+    //     let _entries = parse_multilingual_wordnet_file(File::open(path).unwrap());
+    // }
 }

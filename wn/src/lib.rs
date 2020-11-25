@@ -1,3 +1,5 @@
+mod pos;
+mod princeton;
 mod multi;
 
 #[cfg(test)]
