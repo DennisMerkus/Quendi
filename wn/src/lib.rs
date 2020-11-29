@@ -1,6 +1,7 @@
-mod pos;
 mod princeton;
 mod multi;
+
+pub mod pos;
 
 #[cfg(test)]
 mod tests {

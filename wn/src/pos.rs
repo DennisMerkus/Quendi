@@ -1,4 +1,4 @@
-#[derive(Debug, PartialEq)]
+#[derive(Copy, Clone, Debug, PartialEq)]
 pub enum Part {
     Adjective,
     Adverb,
@@ -13,5 +13,14 @@ pub fn parse_pos(pos: &str) -> Part {
         "r" => Part::Adverb,
         "v" => Part::Verb,
         _ => panic!()
+    }
+}
+
+pub fn as_char(pos: Part) -> char {
+    match pos {
+        Part::Adjective => 'a',
+        Part::Adverb => 'r',
+        Part::Noun => 'n',
+        Part::Verb => 'v',
     }
 }
