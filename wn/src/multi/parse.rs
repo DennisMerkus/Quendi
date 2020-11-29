@@ -5,15 +5,15 @@ use std::fs::File;
 use std::io::{BufReader, BufRead};
 
 #[derive(Debug, PartialEq)]
-struct Lemma {
-    language: String,
+pub struct Lemma {
+    pub language: String,
     offset: String,
-    pos: Part,
-    lemma: String,
+    pub pos: Part,
+    pub lemma: String,
 }
 
 #[derive(Debug, PartialEq)]
-struct Definition {
+pub struct Definition {
     language: String,
     offset: String,
     pos: Part,
@@ -22,7 +22,7 @@ struct Definition {
 }
 
 #[derive(Debug, PartialEq)]
-struct Example {
+pub struct Example {
     language: String,
     offset: String,
     pos: Part,
@@ -30,16 +30,18 @@ struct Example {
 }
 
 #[derive(Debug, PartialEq)]
-enum Entry {
+pub enum Entry {
     Definition(Definition),
     Example(Example),
     Lemma(Lemma),
 }
 
 fn parse_multilingual_wordnet_line(line: &str) -> Entry {
-    let regex = Regex::new(r"^(?P<offset>\d{8})-(?P<pos>[nvars])\s(?P<language>\w{3}):(?P<type>lemma|def|exe)\s((?P<sid>\d{1})\s)?(?P<content>.+)\s*$").unwrap();
-
-    let captures = regex.captures(line).unwrap();
+    lazy_static! {
+        static ref MULTILINGUAL_WORDNET_LINE_REGEX: Regex = Regex::new(r"^(?P<offset>\d{8})-(?P<pos>[nvars])\s(?P<language>\w{3}):(?P<type>lemma|def|exe)\s((?P<sid>\d{1})\s)?(?P<content>.+)\s*$").unwrap();
+    }
+    
+    let captures = MULTILINGUAL_WORDNET_LINE_REGEX.captures(line).unwrap();
 
     let language = captures.name("language").unwrap().as_str().to_string();
     let offset = captures.name("offset").unwrap().as_str().to_string();
@@ -75,7 +77,7 @@ fn parse_multilingual_wordnet_line(line: &str) -> Entry {
     }
 }
 
-fn parse_multilingual_wordnet_file(file: File) -> Vec<Entry> {
+pub fn parse_multilingual_wordnet_file(file: File) -> Vec<Entry> {
     let mut entries: Vec<Entry> = Vec::new();
 
     for line in BufReader::new(file).lines() {

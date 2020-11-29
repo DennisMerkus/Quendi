@@ -3,33 +3,33 @@ use wn::pos::{Part, as_char};
 
 
 pub struct Lexeme {
-    lemma: String,
-    pos: Part,
+    pub lemma: String,
+    pub pos: Part,
 }
 
 #[derive(Default)]
-pub struct Lexicon<'a> {
-    pub lexemes: HashMap<String, &'a Lexeme>
+pub struct Lexicon {
+    lexemes: HashMap<String, Lexeme>
 }
 
 fn lexeme_key(lemma: &str, pos: Part) -> String {
     format!("{}:{}", lemma, as_char(pos))
 }
 
-impl<'a> Lexicon<'a> {
-    fn new() -> Lexicon<'a> {
+impl Lexicon {
+    pub fn new() -> Lexicon {
         Lexicon {
             lexemes: HashMap::new(),
         }
     }
 
-    fn add_lexeme(&mut self, lexeme: &'a Lexeme) {
+    pub fn add_lexeme(&mut self, lexeme: Lexeme) {
         let key = lexeme_key(lexeme.lemma.as_str(), lexeme.pos);
 
-        self.lexemes.insert(key, &lexeme);
+        self.lexemes.insert(key, lexeme);
     }
 
-    fn find_lexeme_by_lemma(&self, lemma: &str, pos: Part) -> Result<&Lexeme, ()> {
+    pub fn find_lexeme_by_lemma(&self, lemma: &str, pos: Part) -> Result<&Lexeme, ()> {
         let key = lexeme_key(lemma, pos);
 
         match self.lexemes.get(&key) {
@@ -59,7 +59,7 @@ mod tests {
             pos: Part::Verb,
         };
 
-        lexicon.add_lexeme(&lexeme);
+        lexicon.add_lexeme(lexeme);
 
         assert_eq!(lexicon.find_lexeme_by_lemma("search", Part::Verb).unwrap().lemma, String::from("search"));
     }

@@ -1,7 +1,8 @@
-mod princeton;
-mod multi;
+#[macro_use] extern crate lazy_static;
 
+pub mod multi;
 pub mod pos;
+pub mod princeton;
 
 #[cfg(test)]
 mod tests {

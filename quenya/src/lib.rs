@@ -1,8 +1,11 @@
 mod lexicon;
 mod eng;
-mod jpn;
+pub mod jpn;
+pub mod nld;
 pub mod uxy;
 pub mod text;
+
+mod omni;
 
 pub fn annotate(text: &str) -> &str {
     text
