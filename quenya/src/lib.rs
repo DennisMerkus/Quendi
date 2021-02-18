@@ -1,5 +1,6 @@
 mod lexicon;
-mod eng;
+pub mod ara;
+pub mod eng;
 pub mod jpn;
 pub mod nld;
 pub mod uxy;
